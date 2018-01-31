@@ -34,6 +34,7 @@ $(function() {
          it('should have a URL defined', function(){
            allFeeds.forEach(function(feed) {
                 expect(feed.url).toBeDefined();
+                expect(feed.url).not.toBe('');
             });
          });
 
@@ -45,6 +46,7 @@ $(function() {
          it('should have a name defined', function(){
            allFeeds.forEach(function(feed){
              expect(feed.name).toBeDefined();
+             expect(feed.name).not.toBe('');
            });
          });
     });
@@ -83,7 +85,11 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
-  });       
+         it('should have at least one entry', function(){
+           loadFeed();
+           expect(allfeeds[0]).toBe(true);
+         });
+  });
 
     /* TODO: Write a new test suite named "New Feed Selection" */
 
