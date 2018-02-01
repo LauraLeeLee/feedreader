@@ -98,22 +98,19 @@ $(function() {
         /*  test ensuring when a new feed is loaded
           by the loadFeed function that the content actually changes.
           Remember, loadFeed() is asynchronous. */
-       var feedBefore ,
+       var feedBefore,
            feedAfter;
-       beforeEach(function(done){
-         loadFeed(0, function(){
+       beforeEach(function(){
+         loadFeed(0, function(done){
            feedBefore = $('.feed').find('h2').first().text();
            console.log(feedBefore);
            (done);
          });
-          loadFeed(1, function(){
+          loadFeed(1, function(done){
            feedAfter = $('.feed').find('h2').first().text();
-           console.log(feedAfter);
            (done);
           });
-
        });
-
        it('feedBefore should not equal feedAfter', function(){
          expect(feedBefore).not.toBe(feedAfter);
        });
