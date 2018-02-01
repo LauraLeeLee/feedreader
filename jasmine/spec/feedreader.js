@@ -86,11 +86,12 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
          beforeEach(function(done){
-           loadFeed();
+           loadFeed(0,(done));
          });
          it('should have at least one entry', function(){
-           expect(allFeeds[0]).toBe(true);
-           done();
+           var entries = $('.feed .entry');
+           expect(entries).toBeGreaterThan(0);
+
          });
     });
 
