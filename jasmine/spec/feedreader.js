@@ -88,9 +88,10 @@ $(function() {
          beforeEach(function(done){
            loadFeed(0,(done));
          });
-         it('should have at least one entry', function(){
+         it('should have at least one entry', function(done){
            var entries = $('.feed .entry');
-           expect(entries).toBeGreaterThan(0);
+           expect(entries.length).toBeGreaterThan(0);
+           done();
 
          });
     });
