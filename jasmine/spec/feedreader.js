@@ -100,18 +100,19 @@ $(function() {
           Remember, loadFeed() is asynchronous. */
        var feedBefore,
            feedAfter;
-       beforeEach(function(){
-         loadFeed(0, function(done){
+       beforeEach(function(done){
+         loadFeed(0, function(){
            feedBefore = $('.feed').find('h2').first().text();
-           console.log(feedBefore);
            (done);
          });
-          loadFeed(1, function(done){
-           feedAfter = $('.feed').find('h2').first().text();
-           (done);
-          });
        });
-       it('feedBefore should not equal feedAfter', function(){
+
+       it('should load new content', function(){
+         loadFeed(1, function(done){
+          feedAfter = $('.feed').find('h2').first().text();
+          (done);
+         });
+         console.log(feedBefore, feedAfter);
          expect(feedBefore).not.toBe(feedAfter);
        });
     });
