@@ -107,8 +107,8 @@ $(function() {
          });
        });
 
-       it('should load new content', function(){
-         loadFeed(1, function(done){
+       it('should load new content', function(done){
+         loadFeed(1, function(){
           feedAfter = $('.feed').find('h2').first().text();
           (done);
          });
