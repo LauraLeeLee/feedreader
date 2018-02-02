@@ -103,17 +103,21 @@ $(function() {
        beforeEach(function(done){
          loadFeed(0, function(){
            feedBefore = $('.feed').find('h2').first().text();
-           (done);
+           done();
          });
        });
+
+       afterAll(function(done) {
+            loadFeed(0, done);
+        });
 
        it('should load new content', function(done){
          loadFeed(1, function(){
           feedAfter = $('.feed').find('h2').first().text();
-          (done);
-         });
-         console.log(feedBefore, feedAfter);
-         expect(feedBefore).not.toBe(feedAfter);
+           expect(feedBefore).not.toBe(feedAfter);
+          console.log(feedBefore, feedAfter);
+          done();
+        });
        });
     });
 }());
